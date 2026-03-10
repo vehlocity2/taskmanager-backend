@@ -21,7 +21,7 @@ const SignIn = async (req, res) =>{
         res.cookie("access_token", token, {
             httpOnly: true,
             sameSite: "none",
-            secure: false
+            secure: true
         }).status(200).json({ message: "Signin successful", token })
         console.log("Generated JWT token:", token) 
     } catch (error) {
