@@ -20,7 +20,7 @@ const SignIn = async (req, res) =>{
         const token = jwt.sign(payLoad, process.env.JWT_SECRET, { expiresIn: "1h"})
         res.cookie("access_token", token, {
             httpOnly: true,
-            sameSite: "lax",
+            sameSite: "none",
             secure: false
         }).status(200).json({ message: "Signin successful", token })
         console.log("Generated JWT token:", token) 
