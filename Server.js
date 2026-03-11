@@ -5,7 +5,7 @@ import mongoose from 'mongoose'
 import cookieParser from "cookie-parser"
 
 dotenv.config()
-const port = process.env.PORT
+const port = process.env.PORT 
 
 import dns from 'node:dns';
 dns.setDefaultResultOrder('ipv4first');
@@ -37,7 +37,7 @@ mongoose.connection.on('error', (err) => {
 app.use(express.json())
 app.use(
   cors({
-    origin: "http://localhost:3000", 
+    origin: "https://taskmanager-frontend-chi-six.vercel.app/", 
     credentials: true, 
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
