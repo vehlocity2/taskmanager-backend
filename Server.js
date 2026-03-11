@@ -37,7 +37,7 @@ mongoose.connection.on('error', (err) => {
 app.use(express.json())
 app.use(
   cors({
-    origin: ["http://localhost:3000","https://taskmanager-frontend-chi-six.vercel.app/"], 
+    origin: ["http://localhost:3000","https://taskmanager-frontend-chi-six.vercel.app"], 
     credentials: true, 
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -45,38 +45,13 @@ app.use(
 );
 
 import AuthRoutes from './Routes/AuthRoutes.js'
-import TaskRoutes from "./Routes/TaskRoutes.js"
+import TaskRoutes from "./Routes/TaskRoutes.js" 
 
 
 
 app.use("/api/v2/auths", AuthRoutes )
 app.use("/api/v2/tasks", TaskRoutes)
 
-// Test route to verify database connection
-// app.get('/test-db', async (req, res) => {
-//   try {
-//     // Try to insert a test document
-//     const testCollection = mongoose.connection.db.collection('test');
-//     await testCollection.insertOne({ 
-//       message: 'Hello from Node.js!', 
-//       timestamp: new Date() 
-//     });
-    
-//     // Try to read it back
-//     const result = await testCollection.findOne({ message: 'Hello from Node.js!' });
-    
-//     res.json({ 
-//       success: true, 
-//       message: 'Database is working!',
-//       data: result
-//     });
-//   } catch (error) {
-//     res.status(500).json({ 
-//       success: false, 
-//       error: error.message 
-//     });
-//   }
-// });
 
 
 app.listen(port, () => {
