@@ -37,7 +37,7 @@ mongoose.connection.on('error', (err) => {
 app.use(express.json())
 app.use(
   cors({
-    origin: "https://taskmanager-frontend-chi-six.vercel.app/", 
+    origin: ["http://localhost:3000","https://taskmanager-frontend-chi-six.vercel.app/"], 
     credentials: true, 
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
