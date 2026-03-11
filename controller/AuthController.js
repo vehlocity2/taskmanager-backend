@@ -1,6 +1,9 @@
 import jwt from "jsonwebtoken"
 import Auth from "../models/AuthModel.js"
 
+const isProduction = process.env.NODE_ENV === "production";
+
+
 
 const SignIn = async (req, res) =>{
     const { email, password } = req.body
@@ -20,8 +23,8 @@ const SignIn = async (req, res) =>{
         const token = jwt.sign(payLoad, process.env.JWT_SECRET, { expiresIn: "1h"})
         res.cookie("access_token", token, {
             httpOnly: true,
-            sameSite: "none",
-            secure: true
+            sameSite: isProduction ? "none" : "lax",
+            secure: isProduction,
         }).status(200).json({ message: "Signin successful", token })
         console.log("Generated JWT token:", token) 
     } catch (error) {
